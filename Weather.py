@@ -2,7 +2,8 @@ import requests
 from datetime import datetime
 
 API_KEY = "2da96e8ad076ac98cfdaf97e80642e87"
-CITY = "Tehran"
+
+CITY = input("Enter city name: ")
 
 current_url = "http://api.openweathermap.org/data/2.5/weather"
 current_params = {
@@ -15,7 +16,8 @@ current_response = requests.get(current_url, params=current_params)
 current_data = current_response.json()
 
 if "main" in current_data:
-    print("=== Current Weather ===")
+    print("\n=== Current Weather ===")
+    print("City: " + CITY)
     print("Temperature: " + str(current_data['main']['temp']) + "°C")
     print("Feels like: " + str(current_data['main']['feels_like']) + "°C")
     print("Weather: " + current_data['weather'][0]['description'])
